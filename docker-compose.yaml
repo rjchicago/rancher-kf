@@ -1,0 +1,9 @@
+services:
+  rancher-kf:
+    image: rjchicago/rancher-kf:${TAG:-latest}
+    build: .
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./.kube:/.kube
+    env_file:
+      - .env
