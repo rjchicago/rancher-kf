@@ -11,9 +11,9 @@ For each cluster a user has access to via Rancher, `rancher-kf` will write out a
 See the `example.env` and create a local `.env` file.
 
 ``` sh
-URL="https://rancher.example.com/"
-TOKEN="token-*****:***********************************************"
-CONTEXT="c-m-(...):p-(...)"
+URL=https://rancher.example.com/
+TOKEN="token-*****:***********************************************
+CONTEXT=c-m-(...):p-(...)
 ```
 
 Note: do not include quotes in the .env file.
@@ -24,7 +24,7 @@ The follow environment variables are supported:
 
 * `URL` is the url to the Rancher UI.
 * `TOKEN` is API Token created via Rancher UI.
-* `CONTEXT` is optional and must be provided in a Rancher format - example:
+* `CONTEXT` is optional. If supplied it must be provided in a Rancher format - example:
   * `local:p-xxxxx, c-xxxxx:p-xxxxx, c-xxxxx:project-xxxxx, c-m-xxxxxxxx:p-xxxxx or c-m-xxxxxxxx:project-xxxxx`
 
 ### Rancher API Token
@@ -54,8 +54,8 @@ docker compose run --rm -it rancher-kf
 
 ``` sh
 # local .kube folder
-docker run --rm -v $(pwd)/.kube:/.kube --env-file .env rjchicago/rancher-kf
+docker run --rm -it -v $(pwd)/.kube:/.kube --env-file .env rjchicago/rancher-kf
 
 # user profile .kube folder
-docker run --rm -v ~/.kube:/.kube --env-file .env rjchicago/rancher-kf
+docker run --rm -it -v ~/.kube:/.kube --env-file .env rjchicago/rancher-kf
 ```
