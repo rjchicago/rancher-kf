@@ -36,7 +36,7 @@ Note: select "no scope"
 
 ## Docker Compose
 
-Build and Run via Docker Compose...
+Build and Run via `docker compose`...
 
 ``` sh
 # build
@@ -48,6 +48,8 @@ docker compose run --rm -it rancher-kf
 
 ## Docker Run
 
+Running via `docker run`...
+
 ``` sh
 # local .kube folder
 docker run --rm -it -v $(pwd)/.kube:/.kube --env-file .env rjchicago/rancher-kf
@@ -58,7 +60,7 @@ docker run --rm -it -v ~/.kube:/.kube --env-file .env rjchicago/rancher-kf
 
 ## Aliases
 
-Note: add a `
+Configure aliases in your bash profile...
 
 ``` sh
 # configure rancher-kf.env with URL and TOKEN
