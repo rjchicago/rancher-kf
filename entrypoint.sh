@@ -12,7 +12,8 @@ fi
 
 CLUSTERS=$(rancher clusters ls --format '{{.Cluster.ID}} {{.Cluster.Name}}')
 
-mkdir -p .kube
+OUT_DIR=/.kube/rancher-kf
+mkdir -p $OUT_DIR
 
 while read CLUSTER; do
   CLUSTER_ID=$(echo $CLUSTER | cut -d " " -f 1)
@@ -20,6 +21,6 @@ while read CLUSTER; do
   # if name is not "local"
   if [ ! "$CLUSTER_NAME" == "local" ]; then
     echo "writing $CLUSTER_NAME.yaml"
-    rancher clusters kf $CLUSTER_ID >> /.kube/$CLUSTER_NAME.yaml
+    rancher clusters kf $CLUSTER_ID >> $OUT_DIR/$CLUSTER_NAME.yaml
   fi
 done <<< "$CLUSTERS"
