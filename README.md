@@ -1,10 +1,10 @@
-# Rancher KF
+# Rancher-KF
 
-Download kubeconfig files from Rancher.
+Use `rancher-kf` to download all kubeconfig files from Rancher for each cluster that you have permission to.
 
-Under the hood, this image uses the `rancher/cli2` image to call `rancher clusters kf`.
+Under the hood, `rancher-kf` uses the `rancher/cli2` image to call `rancher clusters kf`.
 
-For each cluster a user has access to via Rancher, `rancher-kf` will write out a separate kubeconfig file to the volume mounted folder.
+For each cluster a user has access to via Rancher, `rancher-kf` will write out a separate kubeconfig file to the volume mounted.
 
 ## .env
 
