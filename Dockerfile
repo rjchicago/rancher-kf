@@ -1,7 +1,7 @@
 FROM rancher/cli2
 
-ENV URL=https://rancher.adstack.kube.cnvr.net/
-ENV CONTEXT=local:p-rqvq7
+ENV URL=
+ENV CONTEXT=
 ENV TOKEN=
 
 VOLUME /.kube
