@@ -43,7 +43,7 @@ Build and Run via `docker compose`...
 docker compose build
 
 # run
-docker compose run --rm -it rancher-kf
+docker compose run --rm rancher-kf
 ```
 
 ## Docker Run
