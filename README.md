@@ -4,7 +4,7 @@ Use `rancher-kf` to download all kubeconfig files from Rancher for each cluster 
 
 Under the hood, `rancher-kf` uses the `rancher/cli2` image to call `rancher clusters kf`.
 
-For each cluster a user has access to via Rancher, `rancher-kf` will write out a separate kubeconfig file to the volume mounted.
+For each cluster a user has access to via **Rancher**, `rancher-kf` will write out a separate kubeconfig file to the volume mounted.
 
 ## .env
 
@@ -55,7 +55,7 @@ Running via `docker run`...
 docker run --rm -it -v $(pwd)/.kube:/.kube --env-file .env rjchicago/rancher-kf
 
 # user profile .kube folder
-docker run --rm -it -v ~/.kube:/.kube --env-file .env rjchicago/rancher-kf
+docker run --rm -it -v ~/.kube:/.kube --env-file rancher-kf.env rjchicago/rancher-kf
 ```
 
 ## Aliases

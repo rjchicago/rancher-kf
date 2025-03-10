@@ -21,6 +21,6 @@ while read CLUSTER; do
   # if name is not "local"
   if [ ! "$CLUSTER_NAME" == "local" ]; then
     echo "writing $CLUSTER_NAME.yaml"
-    rancher clusters kf $CLUSTER_ID >> $OUT_DIR/rancher.$CLUSTER_NAME.yaml
+    rancher clusters kf $CLUSTER_ID > $OUT_DIR/rancher.$CLUSTER_NAME.yaml
   fi
 done <<< "$CLUSTERS"
