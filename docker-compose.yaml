@@ -3,7 +3,9 @@ services:
     image: rjchicago/rancher-kf:${TAG:-latest}
     build: .
     volumes:
-      - ./entrypoint.sh:/entrypoint.sh
+      - ./entrypoint.sh:/entrypoint.sh  # For local development
       - ./.kube:/.kube
     env_file:
       - .env
+    stdin_open: true
+    tty: true
