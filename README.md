@@ -15,6 +15,7 @@ A Docker-based tool to download all kubeconfig files from Rancher for each clust
 - 🐳 Containerized for easy deployment
 - 🔧 Simple environment variable configuration
 - 📁 Organized output with cluster-specific files
+- 🤖 Fully automated - no interactive prompts
 
 ## Table of Contents
 
@@ -54,7 +55,7 @@ CONTEXT=c-m-(...):p-(...)  # Optional
 |----------|----------|-------------|
 | `URL` | ✅ | URL to your Rancher UI (e.g., `https://rancher.example.com/`) |
 | `TOKEN` | ✅ | API Token created in Rancher UI |
-| `CONTEXT` | ❌ | Rancher context (if not provided, you'll be prompted to select) |
+| `CONTEXT` | ❌ | Rancher context (if not provided, automatically selects first available) |
 
 **Context Format Examples:**
 - `local:p-xxxxx`

@@ -77,11 +77,13 @@ kubectl config use-context <cluster-name>
 
 ## What Happens Next?
 
-1. You'll be prompted to **"Select a Project"** if no context was specified
-2. Enter any project ID and press Enter
-3. `rancher-kf` will download kubeconfig files for all accessible clusters
+1. `rancher-kf` automatically connects to your Rancher instance
+2. If no context is specified, it automatically selects the first available project
+3. Downloads kubeconfig files for all accessible clusters
 4. Files are saved as `~/.kube/rancher.<cluster-name>.yaml`
 5. Use `kubectl config get-contexts` to see all available clusters
+
+> **Note:** The tool now runs fully automated with no interactive prompts!
 
 ## Need Help?
 
