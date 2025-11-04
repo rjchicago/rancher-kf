@@ -1,46 +1,88 @@
-# Quickstart
+# Quick Start Guide
 
-Under the hood, `rancher-kf` uses the `rancher/cli2` image to call `rancher clusters kf`.
+Get up and running with `rancher-kf` in under 5 minutes.
 
-## Rancher API Token
+## Prerequisites
 
-Create an API token in the Rancher UI following steps in the documentation:
-> <https://ranchermanager.docs.rancher.com/reference-guides/user-settings/api-keys>
+- Docker installed and running
+- Access to a Rancher instance
+- Permissions to create API tokens in Rancher
 
-Note: select "no scope", optionally set expiration or select `custom: 0` for no expiration.
+## Step 1: Create Rancher API Token
 
-## rancher-kf.env
+1. Log into your Rancher UI
+2. Navigate to **User Settings** → **API Keys**
+3. Click **Add Key**
+4. Select **"No Scope"** for full cluster access
+5. Set expiration (optional) or use `custom: 0` for no expiration
+6. Copy the generated token
 
-Create a `rancher-kf.env` file in your local `.kube` directory..
+📖 [Detailed Instructions](https://ranchermanager.docs.rancher.com/reference-guides/user-settings/api-keys)
 
-``` sh
+## Step 2: Configure Environment
+
+Create your environment file:
+
+```bash
+# Create the config file
+cat > ~/.kube/rancher-kf.env << EOF
 URL=https://rancher.example.com/
-TOKEN=token-*****:***********************************************
-
-echo "
-URL=$URL
-TOKEN=$TOKEN
-" > ~/.kube/rancher-kf.env
+TOKEN=token-xxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+EOF
 ```
 
-## Aliases
+> Replace with your actual Rancher URL and token
 
-Configure aliases in your bash profile..
+## Step 3: Set Up Aliases (Recommended)
 
-``` sh
-# refresh kubeconfig files from rancher
+Add to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.):
+
+```bash
+# Rancher kubeconfig fetcher
 alias rancher-kf="docker run --rm -it -v ~/.kube:/.kube --env-file ~/.kube/rancher-kf.env rjchicago/rancher-kf"
 
-# include all kubeconfig files in KUBECONFIG
-export KUBECONFIG=~/.kube/config$(for YAML in $(find ${HOME}/.kube -name '*.y*ml') ; do echo -n ":${YAML}"; done)
+# Include all kubeconfig files in KUBECONFIG
+export KUBECONFIG=~/.kube/config$(find ${HOME}/.kube -name '*.y*ml' -printf ":%p" 2>/dev/null)
 ```
 
-## Run rancher-kf
+Reload your shell:
+```bash
+source ~/.bashrc  # or ~/.zshrc
+```
 
-``` sh
-# via alias..
+## Step 4: Run rancher-kf
+
+```bash
+# Using the alias
 rancher-kf
 
-# you will be prompted to "Select a Project" - enter any id and hit enter.
-# ..
+# Or directly with docker
+docker run --rm -it -v ~/.kube:/.kube --env-file ~/.kube/rancher-kf.env rjchicago/rancher-kf
 ```
+
+## Step 5: Verify Setup
+
+Check that kubeconfig files were created:
+
+```bash
+# List downloaded configs
+ls -la ~/.kube/rancher.*.yaml
+
+# View available contexts
+kubectl config get-contexts
+
+# Switch to a cluster
+kubectl config use-context <cluster-name>
+```
+
+## What Happens Next?
+
+1. You'll be prompted to **"Select a Project"** if no context was specified
+2. Enter any project ID and press Enter
+3. `rancher-kf` will download kubeconfig files for all accessible clusters
+4. Files are saved as `~/.kube/rancher.<cluster-name>.yaml`
+5. Use `kubectl config get-contexts` to see all available clusters
+
+## Need Help?
+
+See the main [README](README.md) for detailed documentation and troubleshooting.
