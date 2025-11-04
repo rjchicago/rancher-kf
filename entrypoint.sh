@@ -15,8 +15,9 @@ if [ -n "${CONTEXT:-}" ]; then
     exit 1
   fi
 else
-  echo "No context specified, will prompt for selection"
-  if ! rancher login "$URL" -t "$TOKEN" --skip-verify; then
+  echo "No context specified, auto-selecting first available context"
+  # Get first available context automatically
+  if ! echo "1" | rancher login "$URL" -t "$TOKEN" --skip-verify; then
     echo "ERROR: Failed to login to Rancher" >&2
     exit 1
   fi
