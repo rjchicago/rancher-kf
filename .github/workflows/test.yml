@@ -1,0 +1,41 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install dependencies
+      run: |
+        # Install k3d
+        curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+        
+        # Install helm
+        curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+        
+        # Verify installations
+        kubectl version --client
+        helm version
+        k3d version
+        jq --version
+    
+    - name: Setup local Rancher environment
+      run: ./dev/setup.sh
+    
+    - name: Build rancher-kf image
+      run: docker compose build
+    
+    - name: Run end-to-end test
+      run: ./dev/test.sh
+    
+    - name: Cleanup
+      if: always()
+      run: ./dev/teardown.sh
