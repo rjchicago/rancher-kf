@@ -14,14 +14,15 @@ Download all kubeconfig files from Rancher with a single command: `rancher-kf`
 
 ## Overview
 
-`rancher-kf` simplifies the process of managing multiple Kubernetes clusters by automatically downloading kubeconfig files from your Rancher instance. Under the hood, it uses the official `rancher/cli2` image to execute `rancher clusters kf` commands.
+Managing dozens of Kubernetes clusters across different environments is a pain. Manually downloading kubeconfig files from Rancher for each cluster? Even worse. `rancher-kf` solves this by automatically discovering and downloading kubeconfig files for all your accessible clusters with a single command.
 
 **Key Features:**
-- 🚀 Download kubeconfig files for all accessible clusters
-- 🐳 Containerized for easy deployment
-- 🔧 Simple environment variable configuration
+- 🚀 Bulk download kubeconfig files for all accessible clusters
+- 🐳 Containerized - runs anywhere Docker does
+- 🔧 Zero configuration - just provide your Rancher URL and API token
 - 📁 Organized output with cluster-specific files
-- 🤖 Fully automated - no interactive prompts
+- 🤖 Fully automated - no clicking through UIs
+- ⚡ Fast - download dozens of configs in seconds
 
 ## Table of Contents
 
@@ -36,12 +37,9 @@ Download all kubeconfig files from Rancher with a single command: `rancher-kf`
 
 ## Quick Start
 
-1. **Create API Token** in Rancher UI ([documentation](https://ranchermanager.docs.rancher.com/reference-guides/user-settings/api-keys))
-2. **Create `.env` file** (see [Configuration](#configuration))
-3. **Run the container**:
-   ```bash
-   docker run --rm -it -v ~/.kube:/.kube --env-file .env rjchicago/rancher-kf
-   ```
+Get up and running in under 5 minutes:
+
+See the [**📖 Complete Quick Start Guide**](QUICKSTART.md) for step-by-step instructions.
 
 ## Configuration
 
