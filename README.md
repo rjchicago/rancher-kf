@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/rjchicago/rancher-kf/workflows/Docker%20Build%20and%20Push/badge.svg)](https://github.com/rjchicago/rancher-kf/actions)
 
-Bulk download kubeconfig files from Rancher clusters with a single Docker command.
+Download all kubeconfig files from Rancher with a single command: `rancher-kf`
 
 ## Overview
 
