@@ -12,7 +12,7 @@ rm -f .kube/rancher.*.yaml
 
 # Run rancher-kf
 echo "Running rancher-kf..."
-docker run --rm -it --network host -v .kube:/.kube --env-file dev/.env rjchicago/rancher-kf
+docker run --rm --network host -v .kube:/.kube --env-file dev/.env rjchicago/rancher-kf
 
 # Check if new kubeconfig files were created
 echo "Checking for generated kubeconfig files..."
