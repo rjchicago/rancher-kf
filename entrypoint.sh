@@ -29,6 +29,10 @@ if ! CLUSTERS=$(rancher clusters ls --format '{{.Cluster.ID}} {{.Cluster.Name}}'
   exit 1
 fi
 
+echo "Raw cluster list:"
+echo "$CLUSTERS"
+echo "---"
+
 if [ -z "$CLUSTERS" ]; then
   echo "WARNING: No clusters found or accessible"
   exit 0
@@ -38,18 +42,24 @@ OUT_DIR=/.kube
 mkdir -p "$OUT_DIR"
 
 echo "Processing clusters..."
-while IFS= read -r CLUSTER; do
+echo "$CLUSTERS" | while IFS= read -r CLUSTER; do
   [ -z "$CLUSTER" ] && continue
   
   CLUSTER_ID=$(echo "$CLUSTER" | cut -d " " -f 1)
   CLUSTER_NAME=$(echo "$CLUSTER" | cut -d " " -f 2-)
   
-  if [ "$CLUSTER_NAME" != "local" ] && [ -n "$CLUSTER_ID" ]; then
+  echo "Found cluster: ID='$CLUSTER_ID' Name='$CLUSTER_NAME'"
+  
+  if [ -z "$CLUSTER_ID" ]; then
+    echo "Skipping cluster with empty ID: $CLUSTER_NAME"
+  else
     echo "Writing kubeconfig for: $CLUSTER_NAME"
     if ! rancher clusters kf "$CLUSTER_ID" > "$OUT_DIR/rancher.$CLUSTER_NAME.yaml"; then
       echo "WARNING: Failed to get kubeconfig for cluster $CLUSTER_NAME" >&2
+    else
+      echo "Successfully wrote kubeconfig for: $CLUSTER_NAME"
     fi
   fi
-done <<< "$CLUSTERS"
+done
 
 echo "Completed successfully"
