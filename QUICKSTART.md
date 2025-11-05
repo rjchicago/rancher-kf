@@ -42,7 +42,7 @@ Add to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.):
 alias rancher-kf="docker run --rm -it -v ~/.kube:/.kube --env-file ~/.kube/rancher-kf.env rjchicago/rancher-kf"
 
 # Include all kubeconfig files in KUBECONFIG
-export KUBECONFIG=~/.kube/config$(find ${HOME}/.kube -name '*.y*ml' -printf ":%p" 2>/dev/null)
+export KUBECONFIG=~/.kube/config$(find ~/.kube -name '*.y*ml' -printf ":%p" 2>/dev/null)
 ```
 
 Reload your shell:
