@@ -127,6 +127,17 @@ rancher-kf
 kubectl config get-contexts
 ```
 
+## Local Development
+
+For local testing and development, see [dev/README.md](dev/README.md) for a complete K3D + Rancher setup.
+
+```bash
+# Quick local setup
+./dev/setup.sh
+./dev/test.sh
+./dev/teardown.sh
+```
+
 ## Troubleshooting
 
 ### Common Issues
