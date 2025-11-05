@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 # Version configuration
 RANCHER_VERSION="2.12.3"
