@@ -19,7 +19,7 @@ Managing dozens of Kubernetes clusters across different environments is a pain. 
 **Key Features:**
 - 🚀 Bulk download kubeconfig files for all accessible clusters
 - 🐳 Containerized - runs anywhere Docker does
-- 🔧 Minimal configuration - just provide your Rancher URL and API token
+- 🔧 Minimal config - Rancher URL and API token
 - 📁 Organized output with cluster-specific files
 - 🤖 Fully automated - no clicking through UIs
 - ⚡ Fast - download dozens of configs in seconds
