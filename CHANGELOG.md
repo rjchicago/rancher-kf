@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Enhanced shell script robustness
 - Improved Docker Compose configuration
+- Reorganized project structure with src/ and assets/ directories
+
+### Fixed
+- Docker pulls badge rate limiting issue by switching to badgen.net
 
 ## [1.0.0] - Initial Release
 

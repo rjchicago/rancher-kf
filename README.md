@@ -1,12 +1,12 @@
 <div align="center">
-  <img src="logo.png" alt="Rancher-KF Logo" width="400">
+  <img src="assets/logo.png" alt="Rancher-KF Logo" width="400">
 </div>
 
 # Rancher-KF
 
 [![Docker Hub](https://img.shields.io/docker/v/rjchicago/rancher-kf?label=Docker%20Hub)](https://hub.docker.com/r/rjchicago/rancher-kf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Docker Pulls](https://img.shields.io/docker/pulls/rjchicago/rancher-kf)](https://hub.docker.com/r/rjchicago/rancher-kf)
+[![Docker Pulls](https://badgen.net/docker/pulls/rjchicago/rancher-kf)](https://hub.docker.com/r/rjchicago/rancher-kf)
 [![Build Status](https://github.com/rjchicago/rancher-kf/workflows/Build/badge.svg)](https://github.com/rjchicago/rancher-kf/actions)
 [![Test Status](https://github.com/rjchicago/rancher-kf/workflows/Test/badge.svg)](https://github.com/rjchicago/rancher-kf/actions)
 
